@@ -1,0 +1,28 @@
+{
+  "analysis_approach": "Profiled completeness and distributions; examined Pearson and Spearman associations; fit and compared nested ordinary least-squares models; evaluated leave-one-out predictive performance; and checked simple quadratic/interaction extensions, residual diagnostics, bootstrap coefficient intervals, and leave-one-out coefficient stability.",
+  "findings": [
+    {
+      "claim": "x3 has a strong positive association with y.",
+      "evidence": "The marginal Pearson correlation is 0.839 (n=50, p<0.001) and Spearman correlation is 0.810 (p<0.001). In the two-predictor model, the estimated x3 slope is 1.812 with a 95% bootstrap interval of 1.547 to 2.034.",
+      "confidence": 0.99
+    },
+    {
+      "claim": "x4 has an additional negative linear association with y after accounting for x3.",
+      "evidence": "Adding x4 to a model with x3 raises R-squared from 0.704 to 0.760; its conditional slope is -0.484 (p=0.0018; 95% bootstrap interval -0.879 to -0.152). The slope remains negative in every leave-one-out refit.",
+      "confidence": 0.95
+    },
+    {
+      "claim": "A parsimonious linear approximation is y = 1.256 + 1.812*x3 - 0.484*x4.",
+      "evidence": "This model explains 76.0% of in-sample variance and achieves leave-one-out R-squared of 0.721 (RMSE 1.007, versus y standard deviation 1.927). Adding x1, x2, and x5 lowers leave-one-out R-squared to 0.698; their conditional p-values are 0.91, 0.32, and 0.11, respectively.",
+      "confidence": 0.93
+    }
+  ],
+  "overall_conclusion": "The supported structure is predominantly a positive x3-y relationship with a smaller, independent negative x4-y relationship. There is no clear evidence in this sample that x1, x2, or x5 add useful linear predictive information once x3 and x4 are included.",
+  "limitations": [
+    "The dataset has only 50 observations, so effect estimates and validation metrics have meaningful sampling uncertainty.",
+    "The variables are anonymous and observational; these associations do not establish causation or identify the underlying mechanism.",
+    "One observation has a moderately high Cook's distance (0.602) and an externally studentized residual of about 3.12, though the two fitted slopes keep their signs in every leave-one-out fit.",
+    "Only simple linear, squared, and pairwise-interaction forms were assessed. More complex nonlinear or subgroup patterns could be missed without additional data or domain context."
+  ],
+  "recommended_followup": "Collect an independent holdout sample and confirm the two-variable model there; if prediction is the goal, compare it with preregistered nonlinear models while reporting out-of-sample performance."
+}
