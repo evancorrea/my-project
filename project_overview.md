@@ -31,7 +31,9 @@ The high-dimensional null is an intentional exception because dimensionality is 
 
 ## Data Format
 
-Use tabular CSV files with semantically neutral feature names such as:
+Standalone source datasets are stored in `datasets/`. Replicate inputs used for agent runs are stored alongside their responses in `runs/<task_family>/replicate_###/dataset.tsv`.
+
+Use tabular TSV files with semantically neutral feature names such as:
 
 - `x1`
 - `x2`
