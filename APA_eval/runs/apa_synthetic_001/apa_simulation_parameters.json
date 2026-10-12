@@ -1,0 +1,26 @@
+{
+  "random_seed": 42,
+  "number_of_genes": 100,
+  "number_of_samples": 12,
+  "samples_per_condition": 6,
+  "baseline_beta_distribution": {
+    "alpha": 2,
+    "beta": 2
+  },
+  "affected_gene_count": 20,
+  "affected_gene_fraction": 0.2,
+  "effect_size_distribution": {
+    "absolute_log_odds": "Uniform(0.7, 1.4)",
+    "signs": "10 positive, 10 negative"
+  },
+  "replicate_concentration_kappa": 100,
+  "generating_process": "Expected knockdown PDUI is expit(logit(baseline PDUI) + log-odds effect); each replicate is sampled from a beta distribution with mean equal to its condition expectation and concentration kappa.",
+  "limitations": [
+    "The beta distribution is an illustrative prior over gene-specific baseline PDUI values, not a claim about genome-wide APA usage.",
+    "No sequencing reads, read depth, transcript abundance, or APA quantification uncertainty are modeled.",
+    "Gene effects are independent, with no shared regulatory mechanisms or gene networks.",
+    "Replicate observations are independent conditional on gene-specific expected usage.",
+    "There are no batch effects, confounders, or correlations between genes.",
+    "True biological effect is defined by latent condition-specific expected PDUI, not observed difference between sample means."
+  ]
+}
